@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialLink from "../components/SocialLink.astro";
+import { socialLinks } from "../data/social-links";
+
+const title = "مجتبی حسینی";
+const description = "کنجکاوی بزرگ‌ترین ویژگی من است...";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page">
+    <header class="hero">
+      <h1 class="hero__name">{title}</h1>
+      <p class="hero__bio">{description}</p>
+    </header>
+
+    <nav class="social-row" aria-label="شبکه‌های اجتماعی">
+      {socialLinks.map((link) => <SocialLink {...link} />)}
+    </nav>
+  </div>
+</BaseLayout>

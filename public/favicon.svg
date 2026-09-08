@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="م">
+  <rect width="64" height="64" rx="10" fill="#14161b" />
+  <text
+    x="50%"
+    y="54%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    fill="#c9a227"
+    font-family="Tahoma, 'Segoe UI', sans-serif"
+    font-size="34"
+  >م</text>
+</svg>

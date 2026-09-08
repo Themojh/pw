@@ -1,0 +1,142 @@
+/* ---------------------------------------------------------------- */
+/* Design tokens                                                    */
+/* ---------------------------------------------------------------- */
+
+:root {
+  /* Color: a dark ink-navy ground with a warm paper foreground and a
+     single restrained antique-gold accent, used only on interaction. */
+  --color-bg: #14161b;
+  --color-fg: #ece7dd;
+  --color-muted: #8f8d87;
+  --color-accent: #c9a227;
+
+  --font-sans:
+    "Vazirmatn", "Segoe UI", Tahoma, system-ui, -apple-system, sans-serif;
+
+  --measure-bio: 34ch;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --space-page: clamp(1.5rem, 6vw, 5rem);
+}
+
+/* ---------------------------------------------------------------- */
+/* Reset                                                             */
+/* ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(
+    60% 50% at 82% 18%,
+    rgba(201, 162, 39, 0.06),
+    transparent 60%
+  );
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  /* Persian script relies on letters joining — never add letter-spacing
+     to Persian/Arabic text, it breaks that joining. */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+/* Visible keyboard focus everywhere, not just on custom components. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Page layout                                                       */
+/* ---------------------------------------------------------------- */
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 8vh, 5rem);
+  padding: var(--space-page);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.hero {
+  margin-block: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.hero__name {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(3rem, 2rem + 7vw, 8.5rem);
+  line-height: 0.98;
+  max-width: 12ch;
+}
+
+.hero__bio {
+  margin: 0;
+  max-width: var(--measure-bio);
+  color: var(--color-muted);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 0.9rem + 0.7vw, 1.4rem);
+  line-height: 1.8;
+  margin-inline-start: 0.1em;
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(1.75rem, 5vw, 3.5rem);
+  row-gap: 1.25rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Load-in reveal — one orchestrated moment, skipped entirely for    */
+/* people who prefer reduced motion (they see the final state only). */
+/* ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__name,
+  .hero__bio,
+  .social-row {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: reveal 900ms var(--ease) forwards;
+  }
+
+  .hero__name {
+    animation-delay: 60ms;
+  }
+
+  .hero__bio {
+    animation-delay: 220ms;
+  }
+
+  .social-row {
+    animation-delay: 400ms;
+  }
+
+  @keyframes reveal {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
