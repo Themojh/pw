@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://themojh.github.io",
-  base: "/pw",
+  site: "https://themojh.ir",
   trailingSlash: "always",
 });
